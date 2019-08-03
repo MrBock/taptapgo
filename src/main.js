@@ -3,11 +3,18 @@ const body = document.body;
 function toggleBackgroundColor() {
   body.classList.toggle('is-inverted');
 }
-body.addEventListener('keydown', function(e) {
+
+const demoRhythmListener = e => {
+  if (e.keyCode === 13) {
+    showChangeRhythm();
+  }
+};
+const tapRhythmListener = e => {
   if (e.keyCode === 32) {
     toggleBackgroundColor();
   }
-});
+};
+body.addEventListener('keydown', demoRhythmListener);
 
 function createTimingArray(numbersInArray) {
   const array = [];
@@ -28,10 +35,10 @@ function sleep(ms) {
 }
 
 async function showChangeRhythm() {
+  body.removeEventListener('keydown', demoRhythmListener);
   for (let i of firstRound) {
     await sleep(i);
     toggleBackgroundColor();
   }
+  body.addEventListener('keydown', demoRhythmListener);
 }
-
-showChangeRhythm();
