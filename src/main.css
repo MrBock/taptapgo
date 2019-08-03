@@ -1,7 +1,25 @@
 body {
   background-color: black;
+  color: white;
 }
 
 .is-inverted {
   background-color: white;
+  color: black;
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: monospace;
+  font-size: 3vmax;
+  display: none;
+}
+
+.is-screen-intro .screen--intro,
+.is-screen-intro-two .screen--second-intro {
+  display: flex;
 }

@@ -25,8 +25,8 @@ function createTimingArray(numbersInArray) {
   return array;
 }
 
-const firstRound = createTimingArray(5);
-console.log(firstRound);
+const currentRound = createTimingArray(5);
+console.log(currentRound);
 
 function sleep(ms) {
   return new Promise(resolve => {
@@ -35,10 +35,13 @@ function sleep(ms) {
 }
 
 async function showChangeRhythm() {
+  body.classList.remove('is-screen-intro');
+  body.classList.remove('is-screen-intro-two');
   body.removeEventListener('keydown', demoRhythmListener);
-  for (let i of firstRound) {
+  for (let i of currentRound) {
     await sleep(i);
     toggleBackgroundColor();
   }
+  body.classList.add('is-screen-intro-two');
   body.addEventListener('keydown', demoRhythmListener);
 }
